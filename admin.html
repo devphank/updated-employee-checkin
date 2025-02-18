@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Check-In Logs</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>Employee Check-In Logs</h1>
+</header>
+
+<div class="container">
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Employee ID</th>
+                <th>Name</th>
+                <th>Department</th>
+                <th>Check-In Time</th>
+            </tr>
+        </thead>
+        <tbody id="logTable">
+        </tbody>
+    </table>
+</div>
+
+<script src="firebase-config.js"></script>
+<script>
+    const table = document.getElementById("logTable");
+
+    firebase.database().ref("check-ins").on("value", snapshot => {
+        table.innerHTML = "";
+        snapshot.forEach(childSnapshot => {
+            let data = childSnapshot.val();
+            let row = `<tr>
+                <td>${data.employeeID}</td>
+                <td>${data.name}</td>
+                <td>${data.department}</td>
+                <td>${data.checkInTime}</td>
+            </tr>`;
+            table.innerHTML += row;
+        });
+    });
+</script>
+
+</body>
+</html>
