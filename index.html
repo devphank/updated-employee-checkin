@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Check-In</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Seal_of_San_Jose%2C_California.svg/1200px-Seal_of_San_Jose%2C_California.svg.png" 
+         alt="City of San Jose Logo" class="logo">
+    <h1>Employee Check-In System</h1>
+</header>
+
+<div class="container">
+    <p>Welcome to the employee check-in portal for the City of San Jose. Please scan your QR code or enter your details manually.</p>
+
+    <button onclick="scanQR()">📸 Scan QR Code</button>
+
+    <section>
+        <h2>Employee Information</h2>
+        <label for="id">Employee ID:</label>
+        <input type="text" id="id" placeholder="Scan ID or enter manually" required>
+
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" placeholder="John Doe" required>
+
+        <label for="department">Department:</label>
+        <input type="text" id="department" placeholder="Emergency Services, Public Works, etc." required>
+    </section>
+
+    <section>
+        <h2>Check-In Details</h2>
+        <label for="checkin">Check-In Time:</label>
+        <input type="datetime-local" id="checkin" required>
+    </section>
+
+    <button onclick="submitForm()">Submit</button>
+</div>
+
+<script src="firebase-config.js"></script>
+<script src="script.js"></script>
+<script src="qr-scanner.js"></script>
+
+</body>
+</html>
